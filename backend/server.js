@@ -11,6 +11,7 @@ const usersRouter = require('./app/routers/users-router');
 
 app.use(morgan('tiny'));
 app.use(express.json());
+app.use(express.static('uploads'));
 
 connectDB();
 

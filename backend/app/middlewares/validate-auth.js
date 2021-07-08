@@ -24,10 +24,11 @@ exports.validateAuth = (req, res, next) => {
     const token = extractAccessToken(req.headers);
 
     const decodedToken = jwt.verify(token, JWT_SECRET);
+    console.log('decodedToken', decodedToken);
 
-    const { id, name, lastname } = decodedToken;
+    const { _id, name, lastName } = decodedToken;
 
-    req.auth = { id, name, lastname };
+    req.auth = { userId: _id, name, lastName };
 
     next();
   } catch (error) {
